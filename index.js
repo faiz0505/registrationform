@@ -4,6 +4,11 @@ let isValid = true;
 const inputs = document.querySelectorAll(".input");
 const form = document.querySelector("#form");
 const error = document.querySelectorAll(".error");
+const toggleShowPass = document.querySelectorAll("i");
+const pass = document.querySelector("#pass");
+const conPass = document.querySelector("#conPass");
+const loadingSpinner = document.querySelector("#loading");
+let toggle = false;
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
   // console.log(user);
@@ -17,6 +22,7 @@ form.addEventListener("submit", async (e) => {
   } else {
     if (user.pass === user.confirmPass) {
       try {
+        loadingSpinner.style.display = "block";
         const res = await fetch("http://localhost:3000", {
           method: "POST",
           headers: {
@@ -26,13 +32,17 @@ form.addEventListener("submit", async (e) => {
         });
         if (res.ok) {
           alert("success");
+          loadingSpinner.style.display = "none";
         } else if (res.status == 409) {
           alert("User already exists");
+          loadingSpinner.style.display = "none";
         } else {
           alert("failed");
+          loadingSpinner.style.display = "none";
         }
       } catch (error) {
         alert(error.message);
+        loadingSpinner.style.display = "none";
       }
     } else {
       alert("password and confirm password doen not match");
@@ -76,3 +86,26 @@ inputs.forEach((input) => {
     }
   });
 });
+
+const togglePass = () => {
+  if (pass.type === "password") {
+    pass.type = "text";
+    toggleShowPass[0].classList.add("fa-eye");
+    toggleShowPass[0].classList.remove("fa-eye-slash");
+  } else {
+    pass.type = "password";
+    toggleShowPass[0].classList.remove("fa-eye");
+    toggleShowPass[0].classList.add("fa-eye-slash");
+  }
+};
+const toggleConPass = () => {
+  if (conPass.type === "password") {
+    conPass.type = "text";
+    toggleShowPass[1].classList.add("fa-eye");
+    toggleShowPass[1].classList.remove("fa-eye-slash");
+  } else {
+    conPass.type = "password";
+    toggleShowPass[1].classList.remove("fa-eye");
+    toggleShowPass[1].classList.add("fa-eye-slash");
+  }
+};

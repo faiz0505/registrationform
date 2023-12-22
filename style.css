@@ -42,7 +42,15 @@
   position: relative;
   margin-top: 1rem;
 }
-
+.inp-wraper {
+  width: 100%;
+  position: relative;
+}
+div > i {
+  position: absolute;
+  top: 50%;
+  right: 1rem;
+}
 .btn {
   padding: 1rem 2rem;
   border-radius: 2rem;
@@ -51,6 +59,8 @@
   color: #fff;
   font-weight: lighter;
   margin-top: 1rem;
+  display: flex;
+  align-items: center;
 }
 
 .error {
@@ -59,9 +69,29 @@
   font-size: small;
   display: none;
 }
+.passError {
+  position: absolute;
+}
 .notvalid {
   display: block;
 }
+
+#loading {
+  margin-right: 0.5rem;
+  font-size: 1.3rem;
+  animation: spinner 1s infinite linear;
+  display: none;
+}
+
+@keyframes spinner {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 @media (max-width: 767px) {
   .main {
     padding: 0 1rem;

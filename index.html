@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="style.css" />
+    <script src="https://kit.fontawesome.com/c1dde787c5.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -15,12 +16,20 @@
             <span class="error">*please enter valid name</span>
             <input type="email" name="email" placeholder="Email" class="input" required />
             <span class="error">*please enter valid email</span>
-            <input type="password" name="pass" placeholder="Password" class="input" required minlength="6" />
-            <span class="error">*please enter min 6 character</span>
-            <input type="password" name="confirmPass" placeholder="confirm password" class="input" required
-                minlength="6" />
-            <span class="error">*password not match</span>
-            <button type="submit" class="btn">SUBMIT</button>
+            <div class="inp-wraper pass">
+                <input type="password" name="pass" placeholder="Password" class="input" required minlength="6"
+                    id="pass" />
+                <span class="error passError">*please enter min 6 character</span>
+                <i class="fa-regular fa-eye-slash" onclick="togglePass()"></i>
+            </div>
+            <div class="inp-wraper">
+                <input type="password" name="confirmPass" placeholder="confirm password" class="input pass" required
+                    minlength="6" id="conPass" />
+                <span class="error">*password not match</span>
+                <i class="fa-regular fa-eye-slash" onclick="toggleConPass()"></i>
+            </div>
+            <button type="submit" class="btn"><span><i id="loading"
+                        class="fa-solid fa-spinner"></i></span>SUBMIT</button>
         </form>
     </div>
 </body>
