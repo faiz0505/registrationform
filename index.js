@@ -17,7 +17,7 @@ form.addEventListener("submit", async (e) => {
   } else {
     if (user.pass === user.confirmPass) {
       try {
-        const res = await fetch("http://localhost:3000", {
+        const res = await fetch("https://faiz0505.github.io/registrationform/register", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
