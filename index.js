@@ -21,7 +21,7 @@ form.addEventListener("submit", async (e) => {
   } else {
     if (user.pass === user.confirmPass) {
       try {
-        const res = await fetch("../back-end/register", {
+        const res = await fetch("./back-end/register", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
