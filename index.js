@@ -8,17 +8,16 @@ const toggleShowPass = document.querySelectorAll("i");
 const pass = document.querySelector("#pass");
 const conPass = document.querySelector("#conPass");
 const loadingSpinner = document.querySelector("#loading");
+const toast = document.querySelector(".toast");
 let toggle = false;
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
-  // console.log(user);
-  if (
-    user.name == "" ||
-    user.email == "" ||
-    user.password == "" ||
-    user.confirmPass == ""
-  ) {
-    alert("please fill all fields");
+  console.log(user);
+  if (!user.name || !user.email || !user.pass || !user.confirmPass) {
+    toast.innerHTML = "please fill all the fields";
+    toast.style.transform = "translateY(0rem)";
+    toast.style.boxShadow = "inset 0px 0px 1rem #de3163";
+    closeToast();
   } else {
     if (user.pass === user.confirmPass) {
       try {
@@ -31,21 +30,37 @@ form.addEventListener("submit", async (e) => {
           body: JSON.stringify(user),
         });
         if (res.ok) {
-          alert("success");
+          toast.innerHTML = "Register successfully!";
+          toast.style.transform = "translateY(0rem)";
+          toast.style.boxShadow = "inset 0px 0px 1rem green";
+          closeToast();
+          inputs.forEach((input) => (input.value = ""));
           loadingSpinner.style.display = "none";
         } else if (res.status == 409) {
-          alert("User already exists");
+          toast.innerHTML = "User Already Exist";
+          toast.style.transform = "translateY(0rem)";
+          toast.style.boxShadow = "inset 0px 0px 1rem #de3163";
+          closeToast();
           loadingSpinner.style.display = "none";
         } else {
-          alert("failed");
+          toast.innerHTML = "Something went wrong! please try again";
+          toast.style.transform = "translateY(0rem)";
+          toast.style.boxShadow = "inset 0px 0px 1rem #de3163";
+          closeToast();
           loadingSpinner.style.display = "none";
         }
       } catch (error) {
-        alert(error.message);
+        toast.innerHTML = error.message;
+        toast.style.transform = "translateY(0rem)";
+        toast.style.boxShadow = "inset 0px 0px 1rem #de3163";
+        closeToast();
         loadingSpinner.style.display = "none";
       }
     } else {
-      alert("password and confirm password doen not match");
+      toast.innerHTML = "Password & Confirm Password not match";
+      toast.style.transform = "translateY(0rem)";
+      toast.style.boxShadow = "inset 0px 0px 1rem #de3163";
+      closeToast();
     }
   }
 });
@@ -108,4 +123,10 @@ const toggleConPass = () => {
     toggleShowPass[1].classList.remove("fa-eye");
     toggleShowPass[1].classList.add("fa-eye-slash");
   }
+};
+
+const closeToast = () => {
+  setTimeout(() => {
+    toast.style.transform = "translateY(-10rem)";
+  }, 3000);
 };

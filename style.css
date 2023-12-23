@@ -92,6 +92,20 @@ div > i {
   }
 }
 
+.toast {
+  height: 3rem;
+  width: 30%;
+  background-color: #fff;
+  /* box-shadow: inset 0px 0px 1rem #de3163; */
+  position: absolute;
+  top: 1rem;
+  border-radius: 5rem;
+  display: grid;
+  place-items: center;
+  transition: all 0.4s ease-in-out;
+  transform: translateY(-10rem);
+}
+
 @media (max-width: 767px) {
   .main {
     padding: 0 1rem;
