@@ -21,7 +21,6 @@ form.addEventListener("submit", async (e) => {
   } else {
     if (user.pass === user.confirmPass) {
       try {
-        loadingSpinner.style.display = "block";
         const res = await fetch("http://localhost:3000", {
           method: "POST",
           headers: {
