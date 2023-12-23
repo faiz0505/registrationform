@@ -6,7 +6,7 @@ const User = require("./db/model");
 const app = express();
 const port = 3000;
 const corsOptions = {
-  origin: "http://127.0.0.1:5500/",
+  origin: "https://registrationform-tawny.vercel.app/",
 };
 app.use(cors(corsOptions));
 app.use(express.json());
