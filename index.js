@@ -22,16 +22,13 @@ form.addEventListener("submit", async (e) => {
     if (user.pass === user.confirmPass) {
       try {
         loadingSpinner.style.display = "block";
-        const res = await fetch(
-          "https://registrationform-ruby-alpha.vercel.app",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(user),
-          }
-        );
+        const res = await fetch("/adduser", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(user),
+        });
         if (res.ok) {
           toast.innerHTML = "Register successfully!";
           toast.style.transform = "translateY(0rem)";

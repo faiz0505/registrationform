@@ -6,12 +6,12 @@ const User = require("./db/model");
 const app = express();
 const port = 3000;
 const corsOptions = {
-  origin: "https://registrationform-ruby-alpha.vercel.app",
+  origin: "/",
 };
 app.use(cors(corsOptions));
 app.use(express.json());
 
-app.post("/", async (req, res) => {
+app.post("/adduser", async (req, res) => {
   try {
     const user = req.body;
     connectToMongoDB();
