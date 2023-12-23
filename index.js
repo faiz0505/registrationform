@@ -23,7 +23,7 @@ form.addEventListener("submit", async (e) => {
       try {
         loadingSpinner.style.display = "block";
         const res = await fetch(
-          "https://registrationform-ruby-alpha.vercel.app/",
+          "https://registrationform-ruby-alpha.vercel.app",
           {
             method: "POST",
             headers: {
