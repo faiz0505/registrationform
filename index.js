@@ -21,7 +21,8 @@ form.addEventListener("submit", async (e) => {
   } else {
     if (user.pass === user.confirmPass) {
       try {
-        const res = await fetch("./back-end/register", {
+        loadingSpinner.style.display = "block";
+        const res = await fetch("https://registrationform-tawny.vercel.app", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
